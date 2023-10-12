@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-//Implementation of priority queue using traditional arrays
+//Implementation of priority queue using traditional array
 public class PriorityQueueArray {
     private ArrayList<Integer> list = new ArrayList<Integer>();
 
