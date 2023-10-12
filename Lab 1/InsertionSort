@@ -1,0 +1,37 @@
+//
+//  main.c
+//  InsertionSort
+//
+//  Created by Vignesh on 10/9/23.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void insertionSort(int * array, int count);
+
+int main(int argc, const char * argv[]) {
+    int array[7] = {9, 2, 5, 3, 1, 6, 7};
+
+    insertionSort(array, 7);
+    
+    for (int i = 0; i < 7; i++) {
+        printf("%d\n", array[i]);
+    }
+    
+    return 0;
+}
+
+void insertionSort(int * array, int count) {
+    for (int i = 1; i <= count - 1; i++) {
+        for (int j = i; j > 0; j--) {
+            if (array[j-1] > array[j]) {
+                int value = array[j-1];
+                array[j-1] = array[j];
+                array[j] = value;
+            } else {
+                break;
+            }
+        }
+    }
+}
