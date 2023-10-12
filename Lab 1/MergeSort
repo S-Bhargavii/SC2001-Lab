@@ -1,0 +1,70 @@
+// mergesort
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void mergesort(int *array1, int l, int h);
+void merge(int *array1, int l, int mid, int h);
+
+int main()
+{
+    int arr[] = {9, 5, 1, 0, 10, 11, 90, 12, 4, 3, 27, 81, 8};
+    int l = 0;
+    int h = sizeof(arr) / sizeof(arr[0]);
+    h--;
+    mergesort(arr, l, h);
+    for (int i = 0; i <= h; i++)
+    {
+        printf("%d \n", arr[i]);
+    }
+}
+
+void mergesort(int *array1, int l, int h)
+{
+    if (l != h)
+    {
+        int mid = (l + h) / 2;
+        mergesort(array1, l, mid);
+        mergesort(array1, mid + 1, h);
+        merge(array1, l, mid, h);
+    }
+    else
+    {
+        return;
+        // base case
+    }
+}
+
+void merge(int *array1, int l, int mid, int h)
+{
+    int i = l;
+    int j = mid + 1;
+    int k = 0;
+    int size = l + h - 1;
+    int *temp = (int *)malloc(sizeof(int) * size);
+    while (i <= mid && j <= h)
+    {
+        if (array1[i] < array1[j])
+        {
+            temp[k++] = array1[i++];
+        }
+        else
+        {
+            temp[k++] = array1[j++];
+        }
+    }
+    while (i <= mid)
+    {
+        temp[k++] = array1[i++];
+    }
+    while (j <= h)
+    {
+        temp[k++] = array1[j++];
+    }
+
+    for (int num = 0; num < k; num++)
+    {
+        array1[l++] = temp[num];
+    }
+}
