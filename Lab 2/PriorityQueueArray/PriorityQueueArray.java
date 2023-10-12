@@ -1,34 +1,35 @@
-import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class Main {
-    public static void main(String[] args) {
-        Integer[] weightOfEdges = {7, 3, 4, 8, 1, 6, 9, 2, 5, 10};
+//Implementation of priority queue using traditional arrays
+public class PriorityQueueArray {
+    private ArrayList<Integer> list = new ArrayList<Integer>();
 
-        //--Priority queue using array--
+    //Enqueue method
+    public void enqueue(Integer edge) {
+        //Perform binary search
+        int index = Collections.binarySearch(list, edge);
 
-        PriorityQueueArray priorityQueueArray = new PriorityQueueArray();
-
-        for (int i = 0; i < weightOfEdges.length; i++) {
-            priorityQueueArray.enqueue(weightOfEdges[i]);
+        /*If that particular edge is not found within the array, binary search will return
+        an index that is the negative of its expected position minus one*/
+        if (index < 0) {
+            index = -index - 1;
         }
 
-        priorityQueueArray.dequeue();
-        int minimum = priorityQueueArray.dequeue();
-        System.out.println(minimum);
+        list.add(index, edge);
+    }
 
-        //--Priority queue using min heap--
-
-        //By default, Java's native priority queue by default uses min heap internally
-        PriorityQueue<Integer> priorityQueueHeap = new PriorityQueue<Integer>();
-
-        //Use add method to insert integers to priority queue
-        for (int i = 0; i < weightOfEdges.length; i++) {
-            priorityQueueHeap.add(weightOfEdges[i]);
+    //Dequeue method. Use to retrieve the minimum element out of the array
+    public Integer dequeue() {
+        if (length() == 0) {
+            return null;
+        } else {
+            return list.remove(0);
         }
+    }
 
-        //Use poll method to retrieve the smallest element from the queue
-        //Null when no elements present in queue
-        int min = priorityQueueHeap.poll();
-        System.out.println(min);
+    //Retrieve length of the queue
+    public Integer length() {
+        return list.size();
     }
 }
