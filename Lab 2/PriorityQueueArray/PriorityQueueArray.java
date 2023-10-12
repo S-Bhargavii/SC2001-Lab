@@ -7,7 +7,7 @@ public class PriorityQueueArray {
 
     //Enqueue method
     public void enqueue(Integer edge) {
-        //Perform binary search
+        //Perform binary search. log(n) time complexity in both the average and worst case
         int index = Collections.binarySearch(list, edge);
 
         /*If that particular edge is not found within the array, binary search will return
