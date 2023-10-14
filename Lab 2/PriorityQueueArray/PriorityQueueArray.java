@@ -5,7 +5,6 @@ import java.util.Collections;
 public class PriorityQueueArray {
     private ArrayList<Integer> list = new ArrayList<Integer>();
 
-    //Enqueue method
     public void enqueue(Integer edge) {
         //Perform binary search. log(n) time complexity in both the average and worst case
         int index = Collections.binarySearch(list, edge);
@@ -19,7 +18,7 @@ public class PriorityQueueArray {
         list.add(index, edge);
     }
 
-    //Dequeue method. Use to retrieve the minimum element out of the array
+    //Use to retrieve the minimum element out of the array
     public Integer dequeue() {
         if (length() == 0) {
             return null;
@@ -28,7 +27,6 @@ public class PriorityQueueArray {
         }
     }
 
-    //Retrieve length of the queue
     public Integer length() {
         return list.size();
     }
