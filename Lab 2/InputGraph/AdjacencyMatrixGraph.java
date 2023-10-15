@@ -1,6 +1,6 @@
 public class AdjacencyMatrixGraph {
 
-	  private int[][] adjacencyMatrix;
+    private int[][] adjacencyMatrix;
     private Vertex[] vertices;
 
     public AdjacencyMatrixGraph(int numNodes) {
@@ -14,6 +14,13 @@ public class AdjacencyMatrixGraph {
 
     public void addEdge(int src, int dest, int weight) {
         adjacencyMatrix[src][dest] = weight;
+    }
+
+    public boolean doesEdgeExist(int src, int dest) {
+        if (adjacencyMatrix[src][dest] != 0) {
+            return false;
+        }
+        return true;
     }
 
     public void printGraph() {
