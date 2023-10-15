@@ -25,7 +25,7 @@ public class AdjacencyListGraph {
             System.out.print("Vertex " + vertices[i].id + " -> ");
             for (int j = 0; j < adjacencyList[i].size(); j++) {
                 Edge edge = adjacencyList[i].get(j);
-                System.out.println("Vertex " + edge.dest.id + " , Weight: " + edge.weight);
+                System.out.println("Vertex " + edge.dest + " , Weight: " + edge.weight);
             }
         }
     }
