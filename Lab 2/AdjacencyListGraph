@@ -16,7 +16,7 @@ public class AdjacencyListGraph {
     }
 
     public void addEdge(int src, int dest, int weight) {
-        Edge edge = new Edge(vertices[src], vertices[dest], weight);
+        Edge edge = new Edge(src, dest, weight);
         adjacencyList[src].add(edge);
     }
 
