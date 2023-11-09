@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int max1(int a, int b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+int knapsack(int W, int wt[], int val[], int n)
+{
+    int dp[15];
+    for (int i = 0; i <= 14; i++)
+    {
+        dp[i] = 0;
+    }
+
+    for (int i = 0; i <= 14; i++)
+    {
+        for (int j = 0; j <= 2; j++)
+        {
+            if (i - wt[j] >= 0)
+                dp[i] = max1(dp[i], dp[i - wt[j]] + val[j]);
+        }
+    }
+    return dp[14];
+}
+
+int main()
+{
+    int profit[] = {7, 6, 9};
+    int weight[] = {4, 6, 8};
+    int W = 14;
+    int n = 3;
+    int ans = knapsack(W, weight, profit, n);
+    printf("%d", ans);
+}
